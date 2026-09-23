@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
     globals: true,
+    exclude: ['node_modules', 'dist', '.claude'],
   },
 });

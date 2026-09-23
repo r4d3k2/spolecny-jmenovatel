@@ -25,6 +25,9 @@ describe('generateTask – vlastnostní testy', () => {
         expect(denominators.length).toBeGreaterThanOrEqual(2);
         expect(task.lcd).toBeGreaterThanOrEqual(Math.max(...denominators));
 
+        // lcd nesmí být větší než 36, aby šel zlomek zobrazit a úloha odpovídala 7. třídě.
+        expect(task.lcd).toBeLessThanOrEqual(36);
+
         // lcd je dělitelné každým jmenovatelem a je to skutečně nejmenší takové číslo.
         expect(isLeastCommonMultiple(denominators, task.lcd)).toBe(true);
 

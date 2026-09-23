@@ -25,6 +25,7 @@ function generateDenominators(level: Level): number[] {
       const d2 = randInt(2, 20);
       if (d1 === d2) continue;
       if (d1 % d2 !== 0 && d2 % d1 !== 0) continue;
+      if (lcmOf([d1, d2]) > 36) continue;
       return [d1, d2];
     }
 
@@ -33,6 +34,7 @@ function generateDenominators(level: Level): number[] {
       const d2 = randInt(2, 20);
       if (d1 === d2) continue;
       if (gcd(d1, d2) !== 1) continue;
+      if (lcmOf([d1, d2]) > 36) continue;
       return [d1, d2];
     }
 
@@ -43,12 +45,14 @@ function generateDenominators(level: Level): number[] {
       const g = gcd(d1, d2);
       if (g === 1) continue;
       if (d1 % d2 === 0 || d2 % d1 === 0) continue;
+      if (lcmOf([d1, d2]) > 36) continue;
       return [d1, d2];
     }
 
     if (level === 4) {
       const ds = [randInt(2, 20), randInt(2, 20), randInt(2, 20)];
       if (ds.every((d) => d === ds[0])) continue;
+      if (lcmOf(ds) > 36) continue;
       return ds;
     }
 
@@ -56,6 +60,7 @@ function generateDenominators(level: Level): number[] {
     const d1 = randInt(2, 20);
     const d2 = randInt(2, 20);
     if (d1 === d2) continue;
+    if (lcmOf([d1, d2]) > 36) continue;
     return [d1, d2];
   }
 
